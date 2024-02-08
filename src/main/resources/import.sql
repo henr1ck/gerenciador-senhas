@@ -1,0 +1,1 @@
+insert into users (name, email, phone_number) values ('Pedro Henrique', 'pedro.henrique@example', '8688888888');
