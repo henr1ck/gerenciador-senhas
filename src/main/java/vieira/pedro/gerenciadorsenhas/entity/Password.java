@@ -1,26 +1,22 @@
 package vieira.pedro.gerenciadorsenhas.entity;
 
+
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.Instant;
-import java.util.List;
 
 @Entity
-@Table(name = "users")
-public class User {
+public class Password {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String keyword;
 
-    private String email;
-
-    private String phoneNumber;
+    @ManyToOne
+    private User owner;
 
     @CreationTimestamp
     private Instant creationTimestamp;
@@ -28,18 +24,14 @@ public class User {
     @UpdateTimestamp
     private Instant updateTimestamp;
 
-    public User() {
-    }
+    public Password(){}
 
-    public User(Long id) {
+    public Password(Long id, String keyword, User owner, Instant creationTimestamp, Instant updateTimestamp) {
         this.id = id;
-    }
-
-    public User(Long id, String name, String email, String phoneNumber) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+        this.keyword = keyword;
+        this.owner = owner;
+        this.creationTimestamp = creationTimestamp;
+        this.updateTimestamp = updateTimestamp;
     }
 
     public Long getId() {
@@ -50,28 +42,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getKeyword() {
+        return keyword;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 
     public Instant getCreationTimestamp() {
@@ -90,4 +66,11 @@ public class User {
         this.updateTimestamp = updateTimestamp;
     }
 
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 }

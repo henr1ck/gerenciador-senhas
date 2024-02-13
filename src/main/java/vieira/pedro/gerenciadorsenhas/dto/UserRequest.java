@@ -1,7 +1,5 @@
 package vieira.pedro.gerenciadorsenhas.dto;
 
-import vieira.pedro.gerenciadorsenhas.entity.User;
-
 public class UserRequest {
 
     private String name;

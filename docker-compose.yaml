@@ -1,0 +1,16 @@
+services:
+  db:
+    image: 'postgres:15-alpine3.18'
+    container_name: 'cofre-senhas-db'
+    deploy:
+      restart_policy:
+        condition: 'on-failure'
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '128M'
+    environment:
+      - 'POSTGRES_PASSWORD=1234'
+      - 'POSTGRES_DB=cofre-senhas'
+    ports:
+      - '5432:5432'

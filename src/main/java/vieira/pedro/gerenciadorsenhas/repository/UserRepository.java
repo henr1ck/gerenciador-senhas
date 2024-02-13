@@ -6,5 +6,4 @@ import vieira.pedro.gerenciadorsenhas.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-
 }
